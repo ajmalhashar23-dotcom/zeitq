@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZEITQ AI · Patient registration demo</title>
+  <meta name="description" content="Explore ZEITQ AI patient registration, smart kiosk check-in and linked reception and live token dashboards using fictional sample data.">
+  <link rel="icon" type="image/png" href="./assets/zeitq-logo.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="logged-out">
+  <section class="login-screen" id="login-screen" aria-labelledby="login-title">
+    <div class="login-card">
+      <img class="login-logo" src="./assets/zeitq-logo.png" alt="ZEITQ" width="1224" height="1743">
+      <span class="login-ai">AI · PATIENT ACCESS</span>
+      <h1 id="login-title">Welcome to ZEITQ AI</h1>
+      <p id="auth-description">Log in to prepare your visit and track your token.</p>
+      <form id="login-form">
+        <div class="field"><label for="login-phone">Mobile number</label><input id="login-phone" name="loginPhone" type="tel" inputmode="tel" placeholder="+971 50 000 0000" autocomplete="off" required maxlength="20"></div>
+        <div class="field"><label for="login-code">Demo login code</label><input id="login-code" name="loginCode" type="text" inputmode="numeric" placeholder="Enter 6-digit code" autocomplete="off" required pattern="[0-9]{6}" maxlength="6" aria-describedby="login-code-hint"><small id="login-code-hint">Use code <strong>123456</strong>. No SMS is sent.</small></div>
+        <p id="login-error" class="login-error" role="alert"></p>
+        <button class="btn login-submit" type="submit">Log in</button>
+        <button class="text-button login-sample" type="button" id="sample-login">Use demo login details</button>
+      </form>
+      <p class="auth-switch" id="signup-prompt">First time here? <button class="text-button" id="open-signup" type="button">Sign up</button></p>
+      <form id="signup-form" hidden>
+        <div class="field"><label for="signup-name">Full name</label><input id="signup-name" name="signupName" type="text" placeholder="e.g. Sara Ahmed" required maxlength="80" autocomplete="off"></div>
+        <div class="field"><label for="signup-phone">Mobile number</label><input id="signup-phone" name="signupPhone" type="tel" inputmode="tel" placeholder="+971 50 000 0000" required maxlength="20" autocomplete="off"></div>
+        <div class="field"><label for="signup-email">Email address (optional)</label><input id="signup-email" name="signupEmail" type="email" placeholder="sara@example.com" maxlength="100" autocomplete="off"></div>
+        <div class="field"><label for="signup-code">Demo verification code</label><input id="signup-code" name="signupCode" type="text" inputmode="numeric" placeholder="Enter 6-digit code" required maxlength="6" pattern="[0-9]{6}" autocomplete="off" aria-describedby="signup-code-hint"><small id="signup-code-hint">Use code <strong>123456</strong>. No SMS is sent.</small></div>
+        <p id="signup-error" class="login-error" role="alert"></p>
+        <button class="btn login-submit" type="submit">Create demo account</button>
+        <button class="text-button login-sample" type="button" id="sample-signup">Use demo sign-up details</button>
+        <p class="auth-switch">Already have an account? <button class="text-button" id="back-login" type="button">Log in</button></p>
+      </form>
+      <div class="login-demo-note"><strong>Interactive demo</strong><span>Use fictional details only. Login and sign-up are simulated. Accounts last only for this demo session.</span></div>
+    </div>
+  </section>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#" class="brand" aria-label="ZEITQ AI home"><img class="brand-logo" src="./assets/zeitq-logo.png" alt="ZEITQ" width="1224" height="1743"><span class="brand-ai">AI</span></a>
+      <p class="sidebar-label">PATIENT ACCESS</p>
+      <nav aria-label="Demo views">
+        <button class="nav-item active" data-view="patient"><span aria-hidden="true">◉</span> Patient portal</button>
+        <button class="nav-item" data-view="kiosk"><span aria-hidden="true">▣</span> Smart kiosk</button>
+        <button class="nav-item" data-view="reception"><span aria-hidden="true">▤</span> Reception</button>
+        <button class="nav-item" data-view="tokens"><span aria-hidden="true">≋</span> Live tokens</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="demo-label">INTERACTIVE DEMO</span><p>A smoother start<br>to every visit.</p><small>UAE healthcare access</small></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div><span class="facility-icon" aria-hidden="true">+</span> <span id="facility-name">ZEITQ AI</span> <span class="subtle">Demo provider</span></div><div class="account-actions"><button class="text-button" id="reset-demo">Reset demo</button><button class="text-button" id="logout-demo">Log out</button></div></header>
+      <div class="demo-banner"><span class="demo-pill">Demo</span><span>Use fictional details only. Identity checks, insurance and system connections are simulated.</span></div>
+      <main id="app" tabindex="-1"></main>
+      <footer>This demo keeps information in memory only. Refreshing clears your session.</footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
